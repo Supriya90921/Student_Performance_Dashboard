@@ -102,3 +102,96 @@ select {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.container select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: 0.2s;
+}
+
+.container select:hover {
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+}
+
+.container button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 500;
+}
+
+.container button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+.container button:active {
+  transform: scale(0.98);
+}
+
+
+.top-performer {
+  margin-top: 20px;
+  padding: 18px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 14px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  /* animated gradient background */
+  background: linear-gradient(
+    270deg,
+    #ff4d4d,
+    #ffb84d,
+    #4dff88,
+    #4db8ff,
+    #b84dff
+  );
+  background-size: 1000% 1000%;
+  animation: gradientMove 8s ease infinite;
+}
+
+/* center text properly */
+.top-performer span {
+  display: block;
+  font-size: 20px;
+  margin-top: 6px;
+}
+
+/* gradient animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* glowing overlay effect */
+.top-performer::after {
+  content: "🎉✨🏆";
+  position: absolute;
+  top: 10px;
+  left: -50px;
+  font-size: 18px;
+  opacity: 0.6;
+  animation: floatIcons 6s linear infinite;
+}
+
+@keyframes floatIcons {
+  0% { left: -50px; }
+  100% { left: 110%; }
+}

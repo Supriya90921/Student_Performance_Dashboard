@@ -46,7 +46,7 @@ const initialData = [
           { name: "OS", marks: 72 },
           { name: "Java", marks: 91 },
         ],
-      }
+      },
     ],
   },
 ];
@@ -70,26 +70,24 @@ export default function App() {
     return total / count;
   };
 
-  // ---------- FILTER ----------
+  // ---------- FILTER (SUBJECT LEVEL) ----------
   const filteredStudents = students.filter((student) => {
-  // collect ALL subjects from all semesters
-  const allSubjects = student.semester.flatMap(
-    (sem) => sem.subjects
-  );
+    const allSubjects = student.semester.flatMap(
+      (sem) => sem.subjects
+    );
 
-  // FILTER LOGIC (NOT AVERAGE)
-  if (filter === "80") {
-    return allSubjects.some((sub) => sub.marks > 80);
-  }
+    if (filter === "80") {
+      return allSubjects.some((sub) => sub.marks > 80);
+    }
 
-  if (filter === "90") {
-    return allSubjects.some((sub) => sub.marks > 90);
-  }
+    if (filter === "90") {
+      return allSubjects.some((sub) => sub.marks > 90);
+    }
 
-  return true;
-});
+    return true;
+  });
 
-  // ---------- +5 MARKS ----------
+  // ---------- +5 GRACE MARKS ----------
   const addGraceMarks = () => {
     const updated = students.map((s) => ({
       ...s,
@@ -122,6 +120,12 @@ export default function App() {
 
       <h1>Student Dashboard</h1>
 
+       {/* TOP PERFORMER */}
+     <div className="top-performer">
+  🎉 Top Performer
+  <span>{top?.name} ({max.toFixed(1)})</span>
+</div>
+
       {/* FILTER */}
       <select onChange={(e) => setFilter(e.target.value)}>
         <option value="ALL">All</option>
@@ -132,15 +136,15 @@ export default function App() {
       {/* +5 BUTTON */}
       <button onClick={addGraceMarks}>+5 Grace Marks</button>
 
-      {/* TOP PERFORMER */}
-      <h3>
-        Top Performer: {top?.name} ({max.toFixed(1)})
-      </h3>
+     
 
       {/* STUDENTS */}
       {filteredStudents.map((student) => (
         <div key={student.id}>
-          <StudentCard student={student} />
+          <StudentCard
+            student={student}
+            filter={filter}
+          />
 
           <p>Average: {getAverage(student).toFixed(1)}</p>
         </div>
