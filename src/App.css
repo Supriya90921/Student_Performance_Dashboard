@@ -156,7 +156,7 @@ select {
   /* animated gradient background */
   background: linear-gradient(
     270deg,
-    #ff4d4d,
+   
     #ffb84d,
     #4dff88,
     #4db8ff,
@@ -182,7 +182,7 @@ select {
 
 /* glowing overlay effect */
 .top-performer::after {
-  content: "🎉✨🏆";
+ 
   position: absolute;
   top: 10px;
   left: -50px;
@@ -194,4 +194,33 @@ select {
 @keyframes floatIcons {
   0% { left: -50px; }
   100% { left: 110%; }
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-start; /* LEFT ALIGN */
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* optional: make it cleaner on small screens */
+@media (max-width: 600px) {
+  .controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.container select,
+.container button {
+  float: right;
+  margin-left: 10px;
+}
+
+/* clear float so layout doesn't break below */
+.container h1,
+.container h3,
+.student-card {
+  clear: both;
 }

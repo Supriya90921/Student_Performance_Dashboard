@@ -122,9 +122,9 @@ export default function App() {
 
        {/* TOP PERFORMER */}
      <div className="top-performer">
-  🎉 Top Performer
-  <span>{top?.name} ({max.toFixed(1)})</span>
-</div>
+     🎉 Top Performer
+     <span>{top?.name} ({max.toFixed(1)})</span>
+    </div>
 
       {/* FILTER */}
       <select onChange={(e) => setFilter(e.target.value)}>
